@@ -21,6 +21,7 @@ router.get("/showAll", function (req, res) {
 
 router.get("/showSaved", function (req, res) {
     db.Article.find({ isSaved: true }).then(function (data) {
+        console.log("show");
         res.json(data);
     })
 });
@@ -45,6 +46,7 @@ router.get("/scrape", function (req, res) {
             });
 
             titles.push(entry);
+            console.log(db.Article);
             db.Article.create(entry).then(function (dataEntered) {
                 console.log(dataEntered);
             })
@@ -53,7 +55,8 @@ router.get("/scrape", function (req, res) {
                 });
 
         });
-        res.json(titles);
+        // res.json(titles);
+        res.send("/scraped.html");
     })
 });
 
