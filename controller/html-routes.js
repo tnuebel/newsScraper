@@ -56,7 +56,7 @@ router.get("/scrape", function (req, res) {
 
         });
         // res.json(titles);
-        res.send("/scraped.html");
+        res.json(titles);
     })
 });
 

@@ -1,5 +1,5 @@
-$(document).ready(function(){
-    populatedArticles();
+$( document ).ready(function(){
+    populateArticles();
 });
 
 function populateArticles(){
