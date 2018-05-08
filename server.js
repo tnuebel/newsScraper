@@ -30,7 +30,11 @@ mongoose.connection.once("open", function(){
   console.log("connection error:",error);
 });
 
-
+// if (process.env.MONGODB_URI) {
+//   mongoose.connect(process.env.MONGOD_URI);
+// } else {
+//   mongoose.connect(databaseUri);
+// };
 // routes:
 var routes = require("./controller/html-routes.js");
 app.use(routes);
