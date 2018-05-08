@@ -10,6 +10,4 @@ NPM Packages used:
 - cheerio
 - request
 
-Heroku was used to deploy the app.  Please visit the link: https://newsscraperucsd.herokuapp.com/
-
-
+Heroku was used to deploy the app.
