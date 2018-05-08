@@ -31,13 +31,17 @@ router.get("/save/:id", function (req, res) {
         res.json(data);
     })
 });
-// comment
+
 router.get("/scrape", function (req, res) {
     var url = "https://www.nytimes.com/";
     request(url, function (err, response, html) {
+        // cheerio will load and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
-        var titles = [];
+        // we grab every h2 story within the page
         $("h2.story-heading").each(function (i, item) {
+            // saves an empty result object
+            var titles = [];
+
 
             var entry = ({
                 Headline: $(item).children().text().trim(),
@@ -53,7 +57,8 @@ router.get("/scrape", function (req, res) {
                 .catch(function (err) {
                     console.log(err.message);
                 });
-
+            // // If we were able to successfully scrape and save an Article, send a message to the client
+            // res.send("Scrape Complete");
         });
         // res.json(titles);
         res.json(titles);
