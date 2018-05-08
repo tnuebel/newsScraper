@@ -22,19 +22,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
-// Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/webcrawler");
-
 mongoose.connection.once("open", function(){
 }).on("error", function(error){
   console.log("connection error:",error);
 });
 
-// if (process.env.MONGODB_URI) {
-//   mongoose.connect(process.env.MONGOD_URI);
-// } else {
-//   mongoose.connect(databaseUri);
-// };
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGOD_URI);
+} else {
+  mongoose.connect("mongodb://localhost/webcrawler");
+};
+
 // routes:
 var routes = require("./controller/html-routes.js");
 app.use(routes);
